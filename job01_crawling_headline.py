@@ -10,7 +10,7 @@ url = 'https://news.naver.com/section/100' #카테고리 1번째 URL
 
 df_titles = pd.DataFrame()             # 모든 색션의 뉴스 제목을 저장할 데이터 프레임
 
-for i in range(6):
+for i in range(5,6):
     url = 'https://news.naver.com/section/10{}'.format(i)     # 각 색션별 URL 생성
     resp = requests.get(url)                                   #HTTP Get 요청으로 웹 페이지 가져오기
     soup = BeautifulSoup(resp.text, 'html.parser')      #BeautifulSoup 객체 생성하여 HTML 피싱
@@ -33,6 +33,6 @@ df_titles.info()    #데이터프레임 정보 출력(데이터 타입, 결측�
 
 print(df_titles['category'].value_counts())     #카테고리별 기사 수 확인
 
-df_titles.to_csv('./crawling_data/naver_headline_news_{}.csv'.format(   #전체 데이터프레임에 현재 색션 데이터 추가
+df_titles.to_csv('./crawling_data/naver_headline_news_IT.csv'.format(   #전체 데이터프레임에 현재 색션 데이터 추가
         datetime.datetime.now().strftime('%Y%m%d')), index=False)
 
